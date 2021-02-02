@@ -1,0 +1,6 @@
+---
+- name:  Install Docker & Start Docker Service
+  hosts: webservers
+  become: yes
+  roles:
+    - docker

@@ -1,0 +1,22 @@
+- name: Installing Docker on RedHat Distribution
+  yum:
+    name: docker
+    state: present
+  when: ansible_facts['os_family']|lower == 'redhat'
+  notify:
+    - start docker service
+
+- name: Installing Docker on Debian Distribution
+  apt:
+    name: docker
+    state: present
+  when: ansible_facts['os_family']|lower == 'debian'
+  notify:
+    - start docker service
+
+- name: Installing Docker Compose
+  get_url:
+    url: "https://github.com/docker/compose/releases/download/1.22.0/docker-compose-Linux-x86_64"
+    dest: /usr/local/bin/docker-compose
+  notify:
+    - add execute permission for docker-compose

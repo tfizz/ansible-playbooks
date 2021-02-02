@@ -1,0 +1,10 @@
+- name: start docker service
+  service:
+    name: docker
+    enabled: yes # start on reboot
+    state: started
+
+- name: add execute permission for docker-compose
+  file:
+    dest: /usr/local/bin/docker-compose
+    mode: a+x
