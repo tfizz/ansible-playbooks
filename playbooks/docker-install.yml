@@ -1,5 +1,5 @@
 ---
-- name:  Install Docker & Start Docker Service
+- name:  Install Docker & Docker Compose
   hosts: webservers
   become: yes
   roles:
