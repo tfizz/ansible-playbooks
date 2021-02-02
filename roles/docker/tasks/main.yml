@@ -5,6 +5,8 @@
   when: ansible_facts['os_family']|lower == 'redhat'
   notify:
     - start docker service
+  tags:
+    - docker
 
 - name: Installing Docker on Debian Distribution
   apt:
@@ -13,6 +15,8 @@
   when: ansible_facts['os_family']|lower == 'debian'
   notify:
     - start docker service
+  tags:
+    - docker
 
 - name: Installing Docker Compose
   get_url:
@@ -20,3 +24,5 @@
     dest: /usr/local/bin/docker-compose
   notify:
     - add execute permission for docker-compose
+  tags:
+    - docker-compose
